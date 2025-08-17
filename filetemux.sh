@@ -1,27 +1,10 @@
-#!/data/data/com.termux/files/usr/bin/bash
-# Script auto-setup cho Termux
+ #!/data/data/com.termux/files/usr/bin/bash
+# Script mẫu chạy trên Termux
 
-# Update hệ thống
-echo "[*] Đang update package..."
+# Cập nhật và cài gói cần thiết
 pkg update -y && pkg upgrade -y
+pkg install -y git curl wget
 
-# Danh sách gói cần thiết
-pkgs=("bash" "curl" "git" "python")
-
-echo "[*] Kiểm tra và cài đặt gói cần thiết..."
-for pkg in "${pkgs[@]}"; do
-    if ! command -v $pkg >/dev/null 2>&1; then
-        echo "[*] Đang cài $pkg ..."
-        pkg install -y $pkg
-    else
-        echo "[+] $pkg đã có."
-    fi
-done
-
-echo "[*] Hoàn tất setup. Bắt đầu chạy Python..."
-
-# Đoạn code python đơn giản
-python <<'EOF'
-ten = input("Nhập tên của bạn: ")
-print("Xin chào,", ten, "🎉 Chúc bạn dùng Termux vui vẻ!")
-EOF
+# In ra màn hình
+echo "✅ Xin chào, script Termux đã chạy thành công!"
+echo "📌 Môi trường đã sẵn sàng để dùng."
